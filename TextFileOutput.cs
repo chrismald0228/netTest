@@ -3,19 +3,23 @@ using Microsoft.Extensions.FileSystemGlobbing;
 
 class Text2File
 {
-    private string GetFilePath()
+    private string GetFileFolder()
     {
-        var path = @"C:\Docs";
+        string path = @"C:\WriteTest";
         return path;
     }
 
-    public void CreateFile(Read data)
+    public void CreateFile(string[] data)
     {
-        var fp = GetFilePath();
+        string ff = GetFileFolder();
+        string time = DateTime.Now.ToString();
+        string fn = $"Test.txt";
+        string fp = Path.Combine(ff, fn);
 
-        if (!File.Exists(fp))
+
+        foreach (string line in data)
         {
-            File.WriteAllText(fp, )
+            File.AppendAllText(fp, line+"\n");
         }
     }
 }
